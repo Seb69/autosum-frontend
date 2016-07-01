@@ -61,5 +61,9 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "^0.14.0"
+  },
+  "bin": {
+    "http-server": "./bin/http-server",
+    "hs" : "./bin/http-server"
   }
 }
