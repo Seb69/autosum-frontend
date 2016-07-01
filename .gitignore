@@ -4,8 +4,8 @@
 # Node Files #
 /node_modules/*
 #This not the original http-server, this one was a bit changed to allow gzip compression
-!http-server
 !.bin/http-server
+!http-server
 npm-debug.log
 
 # Typing #
