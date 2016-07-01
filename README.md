@@ -2,4 +2,4 @@
 Sarter project for Angular 2 
 
 ## Install dependencies
-`<addr>`npm install
+`npm install`
