@@ -1,0 +1,12 @@
+#position{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#container{
+    width: 100%;
+    /*background-color: #0000cc;*/
+}
+.postDetails{
+    width: 100%;
+}

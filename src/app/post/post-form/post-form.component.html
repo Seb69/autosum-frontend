@@ -1,0 +1,30 @@
+<div id="container">
+    <div class="ui segment container" id="position">
+        <div class="ui text container">
+            <h1>AutoSum generator</h1>
+            <p>Sum up your <span style="font-weight:bold">Lecture SLide </span></p>
+            <div>
+                <label class="ui icon huge primary button">
+                    <i class="file icon"></i>
+                    Select Lecture Slide
+                    <input type="file" multiple (change)="fileChange(input)" #input id="file" style="display: none"/>
+                    <i class="right arrow icon"></i>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="postDetails">
+    <div class="ui segment  container ">
+        <div *ngFor="let file of files">
+            <post-details
+                    [file]="file"></post-details>
+        </div>
+    </div>
+</div>
+
+<!--<div>-->
+<!--<input type="file" (change)="onTest()"/>-->
+<!--<button (click)="upload()">UPLAOD</button>-->
+<!--</div>-->

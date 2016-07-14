@@ -1,0 +1,26 @@
+<div class="ui segment">
+    <div class="ui divided items">
+        <div class="item">
+            <div class="image">
+                <i class="massive file icon"></i>
+            </div>
+            <div class="content">
+                <div class="big description">
+                    <strong><p>{{file.name}}</p></strong>
+                </div>
+                <div class="meta">
+                    Number of words: {{numberofword}}<br>
+                    Number of slides: {{numberOfSlides}}
+                </div>
+                <div class="extra">
+                    <div class="ui loading right floated primary button"
+                         (click)="downloadFile()"
+                         [class.loading]="!_loading.valueOf()">
+                        Download
+                        <i class=" right floated download icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
