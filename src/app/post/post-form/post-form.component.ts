@@ -25,8 +25,6 @@ export class PostFormComponent {
         
             this.files.push(input.files[i]);
         }
-        // console.debug(input.files.length);
-        // console.log(this.files.length);
     }
 
     test(){

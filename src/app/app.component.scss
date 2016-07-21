@@ -1,0 +1,17 @@
+@import "app.component.mixins";
+@import "../../bourbon/bourbon";
+
+// COLOR
+$primary-color: #901A50;
+
+#logo {
+  padding-left: 0.5em;
+  font-size: xx-large;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.menu-font-size {
+  font-size: large;
+
+}

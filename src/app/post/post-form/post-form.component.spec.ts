@@ -11,12 +11,12 @@ describe('Post form', () => {
 
     it('should add one file to file array', inject([PostFormComponent], (app:PostFormComponent) => {
 
-        // BUILD
-        let value:any[] = [42];
-        let files:File[];
-        let file:File = new File();
-        files.push(new File());
-        expect(files.length).toBe(1);
+        // // BUILD
+        // let value:any[] = [42];
+        // let files:File[];
+        // let file:File = new File();
+        // files.push(new File());
+        // expect(files.length).toBe(4);
 
         // OPERATE
         // app.fileChange(value);

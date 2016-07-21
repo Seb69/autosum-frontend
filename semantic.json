@@ -8,10 +8,10 @@
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "../public/css/",
+      "packaged": "public/css/",
       "uncompressed": "public/css/components/",
-      "compressed": "../public/css/components/",
-      "themes": "../public/css/themes/"
+      "compressed": "public/css/components/",
+      "themes": "public/css/themes/"
     },
     "clean": "dist/"
   },

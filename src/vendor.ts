@@ -9,6 +9,8 @@ import '@angular/router';
 // RxJS
 import 'rxjs';
 
+// import 'ng-semantic';
+
 // // Statics
 // import 'rxjs/add/observable/throw';
 //
@@ -35,8 +37,9 @@ import '@angular2-material/slide-toggle';
 import '@angular2-material/tabs';
 import '@angular2-material/toolbar';
 import '@angular2-material/icon';
+import '@angular2-material/menu';
 
 // import 'file-saver';
 
-import '../public/css/semantic.min.css';
+import '../semantic/public/css/semantic.min.css';
 

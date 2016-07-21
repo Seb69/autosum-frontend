@@ -1,0 +1,8 @@
+// Remove the border radius at each corner
+@borderRadius: 0;
+@border: 0;
+
+// Set space bellow menu
+@margin: 0;
+
+//@boxShadow: 0em 0em 0.7em ;
