@@ -18,6 +18,6 @@ export class UploadService {
         xhr.send(formData);
         return xhr;
     };
-    
+
 
 }

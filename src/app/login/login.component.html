@@ -1,0 +1,54 @@
+<div id="login-page">
+    <div class="ui horizontal divider">LOGIN</div>
+
+    <div class="ui sixteen grid segment container " style="padding: 2em">
+        <div class="eight wide tablet eight wide computer  sixteen wide mobile column">
+
+
+            <form [formGroup]="myFormGroup"
+                  (ngSubmit)="onSubmit(myFormGroup.value)"
+                  class="ui form container">
+                <!--<p>Please enter your user details </p>-->
+
+
+                <div class="field" [class.error]="!usernameVal.valid && usernameVal.touched">
+                    <label>Username</label>
+                    <input placeholder="Username"
+                           type="text"
+                           formControlName="username">
+                    <!--{{ usernameVal.getError }}-->
+
+                    <div *ngIf="usernameVal.touched && !usernameVal.valid "
+                         class="ui basic red pointing prompt label transition visible">
+                        A user name is required
+                    </div>
+                </div>
+
+                <div class="field"  [class.error]="!passwordVal.valid && passwordVal.touched">
+                    <label for="password">Password</label>
+
+                    <input id="password"
+                           placeholder="Password"
+                           type="text"
+                           formControlName="password">
+
+                    <div *ngIf="passwordVal.touched && !passwordVal.valid"
+                         class="ui basic red pointing prompt label transition visible">
+                        Your username should have at least 6 characters
+                    </div>
+
+                </div>
+
+                <div class="inline field">
+                    <a> <label>Not register yet ?</label></a>
+                </div>
+                <button [disabled]="!myFormGroup.valid && usernameVal.touched && passwordVal.touched" type="submit" class="ui blue submit button">Log in</button>
+            </form>
+
+
+        </div>
+        <div class="eight wide column computer tablet only ">
+            <img src="/assets/images/mortarboard.svg" class="ui image centered medium">
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ const URL = 'http://localhost:5000/materials';
     selector: 'post-form',
     template: require('./post-form.component.html'),
     outputs: ['result'],
-    styles: [require('./post-form.component.css')],
+    styles: [require('./post-form.component.scss')],
     directives: [ PostDetailsComponent],
 })
 

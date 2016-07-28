@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Footer} from '../shared'
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     moduleId: module.id,
     selector: 'home',
-    directives: [Footer],
+    directives: [ ROUTER_DIRECTIVES],
     styles: [require('./home.component.scss')],
     template: require('./home.component.html')
 })
