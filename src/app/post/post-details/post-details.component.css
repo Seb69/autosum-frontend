@@ -9,3 +9,8 @@
 #container{
     width: 100%;
 }
+
+.fill-parents{
+    height: inherit;
+    width: inherit;
+}

@@ -22,7 +22,7 @@ export class PostDetailsComponent implements OnInit {
     responseObjcet:any;
     numberofword:number;
     numberOfSlides:number;
-    description:string[];
+    description:string;
     @Input() number:number;
     @Input() file:File;
     _loading:boolean;
@@ -38,7 +38,7 @@ export class PostDetailsComponent implements OnInit {
         console.log("OnInit POST details ");
 
         let xhr:XMLHttpRequest;
-        xhr = this.uploadService.makeFileRequest('http://localhost:5000/materials', this.file);
+        xhr = this.uploadService.makeFileRequest('http://localhost:5001/materials', this.file);
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
@@ -49,6 +49,8 @@ export class PostDetailsComponent implements OnInit {
 
                     this.numberofword = this.detailsService.countNumberOfWords(this.responseObjcet);
                     this.numberOfSlides = this.detailsService.countNumberOfSlide(this.responseObjcet);
+                    this.description = this.detailsService.getDescription(this.responseObjcet);
+
 
                     this._loading = true;
                 } else {

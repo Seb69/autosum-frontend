@@ -30,11 +30,12 @@
                     <input id="password"
                            placeholder="Password"
                            type="text"
-                           formControlName="password">
+                           formControlName="password"
+                           type="password">
 
                     <div *ngIf="passwordVal.touched && !passwordVal.valid"
                          class="ui basic red pointing prompt label transition visible">
-                        Your username should have at least 6 characters
+                        Your username should have at least 3 characters
                     </div>
 
                 </div>
@@ -44,6 +45,15 @@
                 </div>
                 <button [disabled]="!myFormGroup.valid && usernameVal.touched && passwordVal.touched" type="submit" class="ui blue submit button">Log in</button>
             </form>
+            <div *ngIf="wrongAuth" class="ui icon red message">
+                <i class="remove icon"></i>
+                <div class="content">
+                    <div class="header">
+                        User not found or does not exists !
+                    </div>
+                    <p>Register or try again.</p>
+                </div>
+            </div>
 
 
         </div>
@@ -52,3 +62,5 @@
         </div>
     </div>
 </div>
+
+<!--<div *ngIf="isLogIN"> TEST IS LOGIN  </div>-->

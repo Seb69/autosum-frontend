@@ -1,56 +1,73 @@
-import {Component, OnInit} from "@angular/core";
-import {User} from "../shared";
-import { Authentificate } from "../shared"
-
+import {Component} from "@angular/core";
+import {Router, ROUTER_DIRECTIVES} from "@angular/router";
+import {Authenticate, State} from "../shared";
 import {
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,
     FormBuilder,
     FormGroup,
     Validators,
-    AbstractControl,
-    FormControl
-} from '@angular/forms';
+    AbstractControl
+} from "@angular/forms";
 
 @Component({
     moduleId: module.id,
     selector: 'login',
     template: require('./login.component.html'),
     styles: [require('./login.component.scss')],
-    directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES,Authentificate]
+    directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, ROUTER_DIRECTIVES],
+    providers: [Authenticate, State]
 })
 export class LoginComponent {
 
-    myFormGroup: FormGroup;
-    usernameVal: AbstractControl;
-    passwordVal: AbstractControl;
+    myFormGroup:FormGroup;
 
-    constructor(fb: FormBuilder) {
+    usernameVal:AbstractControl;
+    passwordVal:AbstractControl;
+
+
+    wrongAuth:boolean = false;
+
+
+    constructor(fb:FormBuilder, private auth:Authenticate, private router:Router, public state:State) {
         this.myFormGroup = fb.group({
             'username': ['', [Validators.required]],
-            'password': ['',[Validators.required, Validators.minLength(6)]]
+            'password': ['', [Validators.required, Validators.minLength(3)]]
         });
 
         this.usernameVal = this.myFormGroup.controls['username'];
         this.passwordVal = this.myFormGroup.controls['password'];
 
-
-        this.myFormGroup.valueChanges.subscribe(
-            (value:string) => {
-                console.log('value change: ', value);
-                console.log('touched: ', this.myFormGroup.touched);
-
-            }
-        );
-
     }
 
-    onSubmit(value: string): void {
-        if(this.myFormGroup.valid) {
-            console.log('you submitted value: ', value);
+
+    onSubmit(value:string) {
+        if (this.myFormGroup.valid) {
+
+            this.auth.authenticate(this.usernameVal.value, this.passwordVal.value)
+
+                .subscribe(
+                    data => {
+
+                        console.log(data.json());
+                        let access_token = data.json().access_token;
+                        localStorage.setItem('jwt', data.json());
+                        localStorage.setItem('access_token', access_token);
+
+                        this.state.setIsAuth(true);
+
+                        this.router.navigateByUrl('/my-autosum');
+
+                    },
+                    err => {
+                        console.log('Log in fails !');
+                        this.wrongAuth = true;
+                        console.log(err);
+                    }
+                );
+
         }
-        else
-        {
+        else {
             this.usernameVal.markAsTouched();
             this.passwordVal.markAsTouched();
             console.log('Error');

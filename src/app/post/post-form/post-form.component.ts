@@ -4,7 +4,7 @@
 import {Component} from "@angular/core";
 import {PostDetailsComponent} from "../post-details";
 
-const URL = 'http://localhost:5000/materials';
+const URL = 'http://localhost:5001/materials';
 
 @Component({
     selector: 'post-form',
@@ -22,7 +22,7 @@ export class PostFormComponent {
 
         // Loop through each picture file
         for (var i = 0; i < input.files.length; i++) {
-        
+
             this.files.push(input.files[i]);
         }
     }
