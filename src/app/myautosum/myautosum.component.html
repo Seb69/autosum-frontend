@@ -8,32 +8,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let material of materialList">
             <td>
-                <i class="file outline icon"></i> First upload
+                <i class="file outline icon"></i> {{material.name}}
             </td>
-            <td>Description</td>
-            <td class="right aligned">8 hours ago</td>
+            <td >
+                {{material.description}}
+            </td>
+            <td class="right aligned">X hours ago (todo)</td>
             <td class="center aligned">
                 <div class="extra">
                     <div class="ui center floated primary button"
-                         (click)="downloadFile()">
-                        Download
-                        <i class=" center floated download icon"></i>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <i class="file outline icon"></i> Second Upload
-            </td>
-            <td>Initial commit</td>
-            <td class="right aligned">12 hours ago</td>
-            <td class="center aligned">
-                <div class="extra">
-                    <div class="ui center floated primary button"
-                         (click)="downloadFile()">
+                         (click)="downloadFile(material.id)">
                         Download
                         <i class=" center floated download icon"></i>
                     </div>

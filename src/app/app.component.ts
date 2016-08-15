@@ -8,6 +8,7 @@ import { MD_LIST_DIRECTIVES } from "@angular2-material/list";
 import { PostFormComponent } from "./post";
 import { Footer } from "./shared";
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { OAuthState } from "./shared/model";
 
 
 @Component({
@@ -42,18 +43,4 @@ export class AppComponent {
 
     }
 
-    views:Object[] = [
-        {
-            name: "My Account",
-            url: "/home",
-            description: "Edit my account information",
-            icon: "account"
-        },
-        {
-            name: "Lecture Slide History",
-            url: "/home",
-            description: "Find your sum!",
-            icon: "account"
-        }
-    ];
 }

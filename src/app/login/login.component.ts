@@ -44,6 +44,8 @@ export class LoginComponent {
     onSubmit(value:string) {
         if (this.myFormGroup.valid) {
 
+
+
             this.auth.authenticate(this.usernameVal.value, this.passwordVal.value)
 
                 .subscribe(

@@ -26,20 +26,13 @@ export class DetailsService {
 
     public getDescription(material:any):string{
 
-        let keywordsList:string[];
-
-        keywordsList = material.keywordsList;
-        console.log(keywordsList.toString());
         let description:string = material.keywordsList.toString();
 
         do {
             description = description.replace(',', ' ');
         } while (description.match(','));
 
-
-        console.log(description);
-        return description;
+        return description.substr(0,70);
     }
-
 
 }

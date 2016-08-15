@@ -15,6 +15,11 @@ export class UploadService {
         formData.append("file", file);
 
         xhr.open('POST', url, true);
+
+        let bearerToken:string = 'Bearer ' + localStorage.getItem('access_token');
+
+        xhr.setRequestHeader("Authorization", bearerToken);
+
         xhr.send(formData);
         return xhr;
     };

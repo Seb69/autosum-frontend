@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-// let fileSaver = require('./FileSaver.js');
 let fileSaver = require('file-saver/FileSaver.js');
-// import {fileSaver} from 'file-saver/FileSaver.js';
 
 @Injectable()
 export class PdfDownloader {
@@ -13,7 +11,7 @@ export class PdfDownloader {
         // Create the Xhr request object
         let xhr = new XMLHttpRequest();
 
-        let url = `http://localhost:5000/materialPDF/` + id;
+        let url = `http://localhost:5001/materialPDF/` + id;
         xhr.open('GET', url, true);
         xhr.responseType = 'blob';
 

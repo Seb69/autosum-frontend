@@ -40,6 +40,7 @@ export class PostDetailsComponent implements OnInit {
         let xhr:XMLHttpRequest;
         xhr = this.uploadService.makeFileRequest('http://localhost:5001/materials', this.file);
 
+
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
                 if (xhr.status === 201) {
