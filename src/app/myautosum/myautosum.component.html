@@ -1,31 +1,95 @@
-<div class="ui container grid " style="margin-top: 2em; margin-bottom: 25em">
-    <table class="ui celled striped table">
-        <thead>
-        <tr>
-            <th colspan="4">
-                My last uploaded
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let material of materialList">
-            <td>
-                <i class="file outline icon"></i> {{material.name}}
-            </td>
-            <td >
-                {{material.description}}
-            </td>
-            <td class="right aligned">X hours ago (todo)</td>
-            <td class="center aligned">
-                <div class="extra">
-                    <div class="ui center floated primary button"
-                         (click)="downloadFile(material.id)">
-                        Download
-                        <i class=" center floated download icon"></i>
+<div style="min-height: 37em">
+    <div class="ui container grid " style="margin-top: 2em;">
+        <table class="ui celled striped table" >
+            <thead>
+            <tr>
+                <th colspan="5">
+                    My last uploaded
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let material of materialList">
+                <td>
+                    <img src="http://localhost:5001/materialPreview/{{material.id}}/0" alt="Summarized file"
+                         style="width:304px;height:228px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                </td>
+                <td>
+                    <h2>
+                        <div><strong>{{material.name}}</strong></div>
+                    </h2>
+                    <br>
+
+                    <div class="ui text ">
+                        <h3>Description</h3>
+                        <p> {{material.description}}</p>
+                        <p></p>
                     </div>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+
+                </td>
+                <td style="width: 12em">
+                    <div >
+                        <div class="ui floated bottom primary button"
+                             (click)="downloadOriginalFile(material.id, material.name)"
+                             style="display: inline">
+                            Original
+                            <i class=" download icon"></i>
+                        </div>
+                    </div>
+                    <div style="position: relative;margin-top: 3em">
+                        <div class="ui primary button"
+                             (click)="previewOriginal(material.id)"
+                             style="display: inline;">
+                            Preview
+                            <i class=" unhide icon"></i>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 13em">
+                    <div >
+                        <div class="ui  primary button"
+                             (click)="downloadFile(material.id, material.name)"
+                             style="display: inline">
+                            Summarized
+                            <i class=" center floated download icon"></i>
+                        </div>
+                    </div>
+                    <div style="position: relative;margin-top: 3em">
+                        <div class="ui primary button"
+                             (click)="previewSum(material.id)"
+                             style="display: inline;">
+                            Preview
+                            <i class=" unhide icon"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div  *ngIf="isPreviewOriginal"
+      style="width:41em;height:33em;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      position: absolute;top: 15%;left: 25%; z-index: 2;">
+<img src={{imageLink}} alt="Summarized file" style="height: inherit;width: inherit;">
+
+    <button class="ui bottom left attached label" style="font-size: 1.2em" (click)="previous()">Previous</button>
+    <button class="ui  bottom right attached label" style="font-size: 1.2em" (click)="following()">Following</button>
+    <button class="ui  top right attached label" style="font-size: 1.2em" (click)="close()"><i class=" center floated close icon"></i></button>
+
+</div>
+
+<div  *ngIf="isPreviewSum"
+      style="width:41em;height:33em;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      position: absolute;top: 15%;left: 25%; z-index: 2;">
+<img src={{imageLink}} alt="Summarized file" style="height: inherit;width: inherit;">
+
+    <button class="ui bottom left attached label" style="font-size: 1.2em" (click)="previousSum()">Previous</button>
+    <button class="ui  bottom right attached label" style="font-size: 1.2em" (click)="followingSum()">Following</button>
+    <button class="ui  top right attached label" style="font-size: 1.2em" (click)="closeSum()"><i class=" center floated close icon"></i></button>
+
 </div>

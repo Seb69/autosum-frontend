@@ -1,13 +1,14 @@
 import {Component} from "@angular/core";
 import {Router, ROUTER_DIRECTIVES} from "@angular/router";
-import {Authenticate, State} from "../shared";
+import {Authenticate, State, GlobalStateService} from "../shared";
+import {AppComponent} from "../app.component";
 import {
     FORM_DIRECTIVES,
     REACTIVE_FORM_DIRECTIVES,
     FormBuilder,
     FormGroup,
     Validators,
-    AbstractControl
+    AbstractControl,
 } from "@angular/forms";
 
 @Component({
@@ -16,20 +17,18 @@ import {
     template: require('./login.component.html'),
     styles: [require('./login.component.scss')],
     directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, ROUTER_DIRECTIVES],
-    providers: [Authenticate, State]
+    providers: [Authenticate, State, AppComponent, GlobalStateService]
 })
 export class LoginComponent {
 
-    myFormGroup:FormGroup;
+    myFormGroup: FormGroup;
 
-    usernameVal:AbstractControl;
-    passwordVal:AbstractControl;
+    usernameVal: AbstractControl;
+    passwordVal: AbstractControl;
 
+    wrongAuth: boolean = false;
 
-    wrongAuth:boolean = false;
-
-
-    constructor(fb:FormBuilder, private auth:Authenticate, private router:Router, public state:State) {
+    constructor(fb: FormBuilder, private auth: Authenticate, private router: Router, public state: State,private  globalState:GlobalStateService) {
         this.myFormGroup = fb.group({
             'username': ['', [Validators.required]],
             'password': ['', [Validators.required, Validators.minLength(3)]]
@@ -41,31 +40,38 @@ export class LoginComponent {
     }
 
 
-    onSubmit(value:string) {
+    onSubmit(value: string) {
         if (this.myFormGroup.valid) {
-
 
 
             this.auth.authenticate(this.usernameVal.value, this.passwordVal.value)
 
                 .subscribe(
-                    data => {
+                        data => {
 
-                        console.log(data.json());
-                        let access_token = data.json().access_token;
-                        localStorage.setItem('jwt', data.json());
-                        localStorage.setItem('access_token', access_token);
+                            console.log(data.json());
+                            let access_token = data.json().access_token;
+                            localStorage.setItem('jwt', data.json());
+                            localStorage.setItem('access_token', access_token);
+                            localStorage.setItem('IsLOGIN', 'true');
+                            console.log('IsLOGIN set in localstorage');
 
-                        this.state.setIsAuth(true);
+                            // this.isLogin = true;
+                            // .isLogin(true);
+                            // this.app.isLogin(true);
 
-                        this.router.navigateByUrl('/my-autosum');
+                            this.globalState.isLogIn = true;
 
-                    },
-                    err => {
-                        console.log('Log in fails !');
-                        this.wrongAuth = true;
-                        console.log(err);
-                    }
+                            this.state.setIsAuth(true);
+
+                            this.router.navigateByUrl('/my-autosum');
+
+                        },
+                        err => {
+                            console.log('Log in fails !');
+                            this.wrongAuth = true;
+                            console.log(err);
+                        }
                 );
 
         }

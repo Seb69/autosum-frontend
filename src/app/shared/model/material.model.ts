@@ -4,6 +4,7 @@ export class Material {
     private _name:string;
     private _description:string;
 
+
     constructor() {
     }
 

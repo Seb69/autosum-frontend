@@ -37,9 +37,15 @@ export class PostDetailsComponent implements OnInit {
         this._loading = false;
         console.log("OnInit POST details ");
 
+        let token = localStorage.getItem('access_token');
         let xhr:XMLHttpRequest;
-        xhr = this.uploadService.makeFileRequest('http://localhost:5001/materials', this.file);
 
+        if (token !== null) {
+            xhr = this.uploadService.makeFileRequest('http://localhost:5001/materials', this.file);
+        }
+        else {
+            xhr = this.uploadService.makeFileRequestOffline('http://localhost:5001/materialsOffline', this.file);
+        }
 
         xhr.onreadystatechange = () => {
             if (xhr.readyState === 4) {
@@ -70,6 +76,6 @@ export class PostDetailsComponent implements OnInit {
 
     downloadFile() {
 
-        this.downloadService.download(this.responseObjcet.MATERIAL_ID);
+        this.downloadService.download(this.responseObjcet.MATERIAL_ID, this.responseObjcet.materialFilePATH);
     }
 }

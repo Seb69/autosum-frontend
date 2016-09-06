@@ -4,6 +4,7 @@ import {AppComponent} from "./app/app.component";
 import {HTTP_PROVIDERS} from "@angular/http";
 import {appRouterProviders} from "./app/app.routes";
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import {Global} from "./app/global.variables";
 
 if (process.env.ENV === 'production') {
     enableProdMode();
@@ -15,6 +16,7 @@ bootstrap(
         appRouterProviders,
         HTTP_PROVIDERS,
         disableDeprecatedForms(),
-        provideForms()
+        provideForms(),
+        Global
     ]
 ).catch(err => console.error(err));

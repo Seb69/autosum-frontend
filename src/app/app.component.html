@@ -1,21 +1,26 @@
+<div class="ui stackable menu" style="z-index: 1;position: relative">
 
-    <div class="ui stackable menu" style="z-index: 1;position: relative" >
+    <a class="item" routerLink="">
+        <img src="/assets/icons/ic_filter_drama_black_24px.svg">
+        <div id="logo">AutoSum</div>
+    </a>
+    <a class="item font-size" routerLink="/post-form">AutoSum<sup>
+        <div *ngIf="!isLogin" id="off">OFFLINE</div>
+    </sup></a>
+    <a *ngIf="isLogin" class="item font-size" routerLink="/my-autosum">My AutoSum</a>
 
-        <a class="item" routerLink="">
-            <img src="/assets/icons/ic_filter_drama_black_24px.svg">
-            <div id="logo">AutoSum</div>
-        </a>
-        <a class="item font-size" routerLink="/post-form">AutoSum<sup><div id="off">OFFLINE</div></sup></a>
-        <a class="item font-size" routerLink="/my-autosum">My AutoSum</a>
+    <div class="right menu">
 
-        <div class="right menu">
-            <a class="ui item font-size" routerLink="/login" >
-                Login
+            <a  *ngIf="isLogin" class="ui item font-size" (click)="logOut()">
+                Log Out
             </a>
-        </div>
+            <a   *ngIf="!isLogin" class="ui item font-size" routerLink="/login">
+                Log In
+            </a>
     </div>
+</div>
 
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
 <footer id="footer-position"></footer>
 

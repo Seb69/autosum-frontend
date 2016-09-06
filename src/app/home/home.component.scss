@@ -1,12 +1,15 @@
 @import "../app.component";
 
-#gradient {
-  height: 16em;
-  background: whitesmoke; /* For browsers that do not support gcradients */
-  background: -webkit-linear-gradient(gainsboro , whitesmoke); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(gainsboro , whitesmoke); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(gainsboro , whitesmoke); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(gainsboro , whitesmoke); /* Standard syntax (must be last) */
+$gradient-color-primary: #e1e1e1;
+$gradient-color-secondary: whitesmoke;
+
+
+.gradient {
+  background: $gradient-color-secondary; /* For browsers that do not support gcradients */
+  background: -webkit-linear-gradient($gradient-color-primary , $gradient-color-secondary); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($gradient-color-primary , $gradient-color-secondary); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($gradient-color-primary , $gradient-color-secondary); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($gradient-color-primary , $gradient-color-secondary); /* Standard syntax (must be last) */
   position: relative;
 }
 
@@ -15,9 +18,24 @@
 
 }
 
-#position-text {
-  margin-top: 3.5em;
+.position-text {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  margin-right: 2em;
+  padding: 1em;
 
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.item {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .fill-parents{
@@ -30,8 +48,10 @@
   width: 100%;
 }
 
-#position-image-graduate{
-  padding: 4em;
+.position-image-graduate{
+  padding: 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .get-started{

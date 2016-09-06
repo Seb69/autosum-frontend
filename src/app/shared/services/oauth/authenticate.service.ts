@@ -45,5 +45,37 @@ export class Authenticate {
             //     }
             // );
     }
+    public register(username:any, password:any): Observable<Response>{
+
+        console.log('Registry started');
+
+        username.trim();
+        password.trim();
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        // headers.append('Authorization', 'Basic d2ViX2FwcDpzZWNyZXQ=');
+        // headers.append('Accept', 'application/json');
+
+        var data = 'username=' + username + '&password=' + password;
+
+        return this.http
+            .post('http://localhost:9005/user', data, { headers: headers });
+            // .subscribe(
+            //     data => {
+            //         console.log('It works !');
+            //         console.log(data.json());
+            //         let access_token = data.json().access_token;
+            //         localStorage.setItem('access_token', access_token);
+            //
+            //         this.state.setIsAuth(true);
+            //
+            //     },
+            //     err => {
+            //         console.log('Log in fails !');
+            //         console.log(err);
+            //     }
+            // );
+    }
 
 }
